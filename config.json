@@ -6,16 +6,34 @@
   },
   "monitors": [
     {
-      "monitor": 0,
-      "scene": ""
+      "index": 0,
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 982
+      },
+      "scene": "vscode"
     },
     {
-      "monitor": 1,
-      "scene": ""
+      "index": 1,
+      "bounds": {
+        "x": -926,
+        "y": -1890,
+        "width": 3360,
+        "height": 1890
+      },
+      "scene": "vscode"
     },
     {
-      "monitor": 2,
-      "scene": ""
+      "index": 2,
+      "bounds": {
+        "x": -1180,
+        "y": 0,
+        "width": 1180,
+        "height": 820
+      },
+      "scene": "browser"
     }
   ]
 }

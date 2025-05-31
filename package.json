@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "test": "electron ./test.js",
+    "terminal": "electron ./run-on-terminal.js",
     "start": "electron ."
   },
   "repository": {

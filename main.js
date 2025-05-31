@@ -107,7 +107,7 @@ function createWindow() {
 app.whenReady().then(() => {
   loadConfig();
   createWindow();
-  setInterval(switchSceneIfNeeded, 1000);
+  setInterval(switchSceneIfNeeded, 500); // verifica a cada 500ms
 });
 
 // IPC handlers
@@ -129,3 +129,13 @@ ipcMain.handle("get-scenes", async () => {
   return await getScenesFromOBS();
 });
 ipcMain.handle("obs-status", () => obsConnected);
+ipcMain.handle("get-monitors", () => {
+  // Monitores ativos do Electron
+  const displays = screen.getAllDisplays();
+  // Pega config para associar cenas
+  return displays.map((disp, i) => ({
+    index: i,
+    bounds: disp.bounds,
+    scene: config.monitors[i]?.scene || "",
+  }));
+});

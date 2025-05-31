@@ -7,4 +7,5 @@ contextBridge.exposeInMainWorld("electronAPI", {
   disconnectOBS: () => ipcRenderer.invoke("disconnect-obs"),
   getScenes: () => ipcRenderer.invoke("get-scenes"),
   obsStatus: () => ipcRenderer.invoke("obs-status"),
+  getMonitors: () => ipcRenderer.invoke("get-monitors"),
 });

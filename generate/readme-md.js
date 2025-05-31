@@ -1,4 +1,7 @@
-# OBS Scene Monitor Switcher
+const fs = require("fs");
+
+const content = `
+# OBS Monitor Switcher
 
 Um app Electron que **troca automaticamente a cena do OBS Studio conforme o monitor onde está o mouse**, ideal para setups multi-monitor, streaming ou automações.
 
@@ -24,7 +27,7 @@ Um app Electron que **troca automaticamente a cena do OBS Studio conforme o moni
 ## Pré-requisitos
 
 - **Node.js 18+** (preferencialmente LTS)
-- **OBS Studio** com [obs-websocket plugin](https://obsproject.com/forum/resources/obs-websocket-remote-control-obs-studio-from-websockets.466/) ativado
+- **OBS Studio** com [obs-websocket plugin](https://obsproject.com/forum/resources/obs-websocket-remote-control-obs-studio-from-websockets.466/) ativado  
   - No OBS 28+ já vem integrado, basta habilitar em “Ferramentas > WebSocket Server Settings”
 - **npm** (ou yarn/pnpm se preferir)
 
@@ -34,22 +37,22 @@ Um app Electron que **troca automaticamente a cena do OBS Studio conforme o moni
 
 ### 1. Clone o repositório
 
-```bash
+\`\`\`bash
 git clone https://github.com/seu-usuario/obs-monitor-switcher.git
 cd obs-monitor-switcher
-```
+\`\`\`
 
 ### 2. Instale as dependências
 
-```bash
+\`\`\`bash
 npm install
-```
+\`\`\`
 
 ### 3. Rode o app
 
-```bash
+\`\`\`bash
 npm start
-```
+\`\`\`
 
 O app abrirá com a interface gráfica para configuração.
 
@@ -60,11 +63,11 @@ O app abrirá com a interface gráfica para configuração.
 ### **macOS (app standalone .app/.dmg)**
 
 1. Instale o [electron-builder](https://www.electron.build/) (global ou dev dependency):
-   ```bash
+   \`\`\`bash
    npm install --save-dev electron-builder
-   ```
-2. No `package.json`, adicione:
-   ```json
+   \`\`\`
+2. No \`package.json\`, adicione:
+   \`\`\`json
    "build": {
      "appId": "com.seuusuario.obsmonitorswitcher",
      "mac": { "category": "public.app-category.utilities" },
@@ -82,24 +85,23 @@ O app abrirá com a interface gráfica para configuração.
      "start": "electron .",
      "dist": "electron-builder"
    }
-   ```
+   \`\`\`
 3. Para compilar o app para Mac:
-   ```bash
+   \`\`\`bash
    npm run dist
-   ```
-   O instalador `.dmg`/`.app` será gerado na pasta `dist/`.
+   \`\`\`
+   O instalador \`.dmg\`/\`.app\` será gerado na pasta \`dist/\`.
 
 ### **Windows (.exe Installer)**
 
 O mesmo comando funciona em um PC com Windows:
 
-```bash
+\`\`\`bash
 npm run dist
-```
+\`\`\`
+O instalador \`.exe\` será gerado na pasta \`dist/\`.
 
-O instalador `.exe` será gerado na pasta `dist/`.
-
-> **Observação:** Para compilar para outro sistema operacional (cross-compile), o ideal é rodar o comando _no próprio sistema alvo_ (por limitações de dependências nativas do Electron, especialmente Mac para Windows).
+> **Observação:** Para compilar para outro sistema operacional (cross-compile), o ideal é rodar o comando *no próprio sistema alvo* (por limitações de dependências nativas do Electron, especialmente Mac para Windows).
 
 ---
 
@@ -117,20 +119,16 @@ O instalador `.exe` será gerado na pasta `dist/`.
 ## Dúvidas comuns
 
 ### **Funciona no Windows?**
-
 Sim! Funciona no macOS e Windows. No Windows, o app minimiza para a bandeja próxima ao relógio.
 
 ### **Funciona no Linux?**
-
 A detecção de monitores pode funcionar em várias distros, mas o suporte ao tray e a integração com o OBS não são totalmente garantidos/testados.
 
 ### **Posso compilar um app só para Mac ou só para Windows?**
-
-Sim!
-
-- Em um Mac, `npm run dist` gera o instalador `.dmg` ou `.app` para Mac.
-- Em um PC com Windows, `npm run dist` gera o `.exe` instalador.
-- Para compilar para outro SO, rode o comando _no sistema desejado_ (ou use CI cross-platform com Docker/VMs).
+Sim!  
+- Em um Mac, \`npm run dist\` gera o instalador \`.dmg\` ou \`.app\` para Mac.
+- Em um PC com Windows, \`npm run dist\` gera o \`.exe\` instalador.
+- Para compilar para outro SO, rode o comando *no sistema desejado* (ou use CI cross-platform com Docker/VMs).
 
 ---
 
@@ -143,3 +141,8 @@ Sinta-se à vontade para abrir Issues, Pull Requests ou sugerir melhorias!
 ## Licença
 
 MIT
+
+`;
+
+fs.writeFileSync("README.md", content.trim(), "utf8");
+console.log("README.md gerado com sucesso!");

@@ -16,11 +16,11 @@ async function updateOBSStatus() {
 }
 
 async function refreshScenes() {
+  statusEl.textContent = "Obtendo as cenas...";
   scenes = (await window.electronAPI.getScenes()) || [];
 }
 
 async function renderMonitors() {
-  await refreshScenes();
   const container = document.getElementById("monitores");
   container.innerHTML = "";
   monitors.forEach((m, i) => {
@@ -50,12 +50,13 @@ async function renderMonitors() {
 
 async function loadAll() {
   config = await window.electronAPI.getConfig();
-  monitors = config.monitors;
+  monitors = await window.electronAPI.getMonitors();
   // Preenche IP/porta/senha na tela
   document.getElementById("obs-ip").value = config.obs.ip || "localhost";
   document.getElementById("obs-port").value = config.obs.port || 4455;
   document.getElementById("obs-password").value = config.obs.password || "";
   await updateOBSStatus();
+  await refreshScenes();
   await renderMonitors();
 }
 
@@ -67,19 +68,27 @@ connectBtn.onclick = async () => {
   config.obs.password = document.getElementById("obs-password").value.trim();
   await window.electronAPI.saveConfig(config);
   statusEl.textContent = "Conectando...";
-  const { ok, scenes: obsScenes } = await window.electronAPI.connectOBS();
+
+  const { ok } = await window.electronAPI.connectOBS();
+  await updateOBSStatus();
+
   if (ok) {
+    await refreshScenes();
+    // Chama getScenes para garantir que a lista está disponível
+    //scenes = await window.electronAPI.getScenes();
     statusEl.textContent = "Conectado ao OBS!";
-    scenes = obsScenes || [];
-    await updateOBSStatus();
     await renderMonitors();
   } else {
+    scenes = [];
+    await renderMonitors();
     statusEl.textContent = "Falha ao conectar ao OBS!";
   }
 };
 
 disconnectBtn.onclick = async () => {
   await window.electronAPI.disconnectOBS();
+  scenes = [];
+  await renderMonitors();
   statusEl.textContent = "Desconectado do OBS";
   await updateOBSStatus();
 };
