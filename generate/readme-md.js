@@ -38,8 +38,8 @@ Um app Electron que **troca automaticamente a cena do OBS Studio conforme o moni
 ### 1. Clone o repositório
 
 \`\`\`bash
-git clone https://github.com/seu-usuario/obs-monitor-switcher.git
-cd obs-monitor-switcher
+git clone https://github.com/alijuniorbr/obs-scene-monitor-switcher
+cd obs-scene-monitor-switcher
 \`\`\`
 
 ### 2. Instale as dependências
@@ -69,7 +69,7 @@ O app abrirá com a interface gráfica para configuração.
 2. No \`package.json\`, adicione:
    \`\`\`json
    "build": {
-     "appId": "com.seuusuario.obsmonitorswitcher",
+     "appId": "br.com.alijunior.obs-scene-monitor-switcher",
      "mac": { "category": "public.app-category.utilities" },
      "win": { "target": "nsis" },
      "files": [
