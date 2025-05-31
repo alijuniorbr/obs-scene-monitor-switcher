@@ -1,0 +1,29 @@
+{
+  "name": "obs-scene-monitor-switcher",
+  "version": "1.0.0",
+  "description": "Switch obs scene accordingly active monitor (tested on mac)",
+  "main": "main.js",
+  "scripts": {
+    "test": "electron ./test.js",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alijuniorbr/obs-scene-monitor-switcher.git"
+  },
+  "keywords": [
+    "obs",
+    "scene",
+    "switcher"
+  ],
+  "author": "Junior Ali and ChatGPT",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alijuniorbr/obs-scene-monitor-switcher/issues"
+  },
+  "homepage": "https://github.com/alijuniorbr/obs-scene-monitor-switcher#readme",
+  "dependencies": {
+    "electron": "^36.3.2",
+    "obs-websocket-js": "^5.0.6"
+  }
+}

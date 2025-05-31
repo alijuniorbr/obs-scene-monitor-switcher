@@ -1,0 +1,21 @@
+{
+  "obs": {
+    "ip": "localhost",
+    "port": 4455,
+    "password": "123456"
+  },
+  "monitors": [
+    {
+      "monitor": 0,
+      "scene": ""
+    },
+    {
+      "monitor": 1,
+      "scene": ""
+    },
+    {
+      "monitor": 2,
+      "scene": ""
+    }
+  ]
+}

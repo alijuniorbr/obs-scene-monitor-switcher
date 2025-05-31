@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Monitor Switcher OBS</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .monitor {
+        margin: 1em 0;
+        padding: 1em;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+      select,
+      input {
+        font-size: 1.1em;
+      }
+      .obs-section {
+        margin-bottom: 1.5em;
+      }
+      .status {
+        margin: 0.5em 0 1em;
+      }
+      .monitor-num {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>OBS Monitor Switcher</h1>
+    <div class="obs-section">
+      <label>IP do OBS: <input id="obs-ip" type="text" size="15" /></label>
+      <label
+        >Porta:
+        <input
+          id="obs-port"
+          type="number"
+          min="1"
+          max="65535"
+          style="width: 70px"
+      /></label>
+      <label>Senha: <input id="obs-password" type="password" /></label>
+      <button id="connect-btn">Conectar</button>
+      <button id="disconnect-btn" style="display: none">Desconectar</button>
+      <span id="obs-status" class="status"></span>
+    </div>
+    <div id="monitores"></div>
+    <button id="save">Salvar Configuração</button>
+    <div id="status"></div>
+    <script src="renderer.js"></script>
+  </body>
+</html>
